@@ -16,11 +16,11 @@ class Controller:
             self.performGameCycle()
             
             if self.isRunning():
-                self.handleInput()
-                
                 window = self.getWindow()
                 window.setScreen(self.screen)
                 window.draw()
+                
+                self.handleInput()
                 
     def getWindow(self):
         """ Returns the Window for the Controller to interact with """
