@@ -14,4 +14,4 @@ class InputProcessor:
         if character in functions:
             functions[character]()
         
-inputProcessor = InputProcessor()
+InputProcessor = InputProcessor()

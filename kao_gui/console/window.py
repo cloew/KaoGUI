@@ -28,7 +28,7 @@ class ConsoleWindow(object):
     def setScreen(self, screen):
         """ Sets the current Screen Display """
         self.screen = screen
-        window.clear()
+        self.clear()
         
     def update(self):
         """ Update the screen """

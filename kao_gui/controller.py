@@ -5,7 +5,7 @@ class Controller:
     def __init__(self, screen, commands={}):
         """ Initialize the controller """
         self.screen = screen
-        self.commands = commands+{ESCAPE:self.stopRunning}
+        self.commands = commands
         self.running = False
     
     def run(self):
@@ -20,7 +20,7 @@ class Controller:
                 
                 window = self.getWindow()
                 window.setScreen(self.screen)
-                self.window.draw()
+                window.draw()
                 
     def getWindow(self):
         """ Returns the Window for the Controller to interact with """
