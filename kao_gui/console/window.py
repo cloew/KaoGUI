@@ -49,6 +49,6 @@ class ConsoleWindow(object):
         
     def clear(self):
         """ Clears the window """
-        #print self.terminal.clear()
+        print self.terminal.clear()
         
 Window = ConsoleWindow()
