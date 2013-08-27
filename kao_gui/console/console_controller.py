@@ -7,8 +7,10 @@ from kao_console.ascii import ESCAPE
 class ConsoleController(Controller):
     """ Represents a Controller for the Console UI """
     
-    def __init__(self, screen, commands={}):
+    def __init__(self, screen, commands=None):
         """ Initialize the controller """
+        if commands is None:
+            commands = {}
         commands[ESCAPE] = self.stopRunning
         Controller.__init__(self, screen, commands=commands)
         

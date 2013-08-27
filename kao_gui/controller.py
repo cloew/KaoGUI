@@ -2,9 +2,11 @@
 class Controller:
     """ Represents a UI Controller """
     
-    def __init__(self, screen, commands={}):
+    def __init__(self, screen, commands=None):
         """ Initialize the controller """
         self.screen = screen
+        if commands is None:
+            commands = {}
         self.commands = commands
         self.running = False
     
