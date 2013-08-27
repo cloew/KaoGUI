@@ -13,7 +13,7 @@ class InputProcessor:
         
         if character in functions:
             functions[character](character)
-        elif chr(character) in functions:
+        elif character < 256 and character > 0 and chr(character) in functions:
             functions[chr(character)](chr(character))
         
 InputProcessor = InputProcessor()
