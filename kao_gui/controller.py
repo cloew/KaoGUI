@@ -30,7 +30,7 @@ class Controller:
     def getInputProcessor(self):
         """ Returns the Input Processor for the controller """
             
-    def stopRunning(self):
+    def stopRunning(self, event=None):
         """ Stop running this controller """
         self.running = False
         

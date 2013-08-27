@@ -12,8 +12,8 @@ class InputProcessor:
         character = getch()
         
         if character in functions:
-            functions[character]()
+            functions[character](character)
         elif chr(character) in functions:
-            functions[chr(character)]()
+            functions[chr(character)](chr(character))
         
 InputProcessor = InputProcessor()
