@@ -45,7 +45,12 @@ class Controller:
         """ Handle User Input """
         self.getInputProcessor().processInput(self.commands)
         
-    def addCommand(self, character, command):
-        """ Add the given command to happen on the given character """
-        self.commands[character] = command
+    def addCommand(self, event, command):
+        """ Add the given command to happen on the given event """
+        self.commands[event] = command
+        
+    def addCommands(self, events, command):
+        """ Add the given command to happen on the given events """
+        for event in events:
+            self.commands[event] = command
         
