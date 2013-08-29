@@ -1,6 +1,8 @@
 from blessings import Terminal
 from contextlib import contextmanager
 
+import sys
+
 class ConsoleWindow(object):
     """ Represents the Console Window displayed to the user """
     
@@ -9,12 +11,12 @@ class ConsoleWindow(object):
         self.screen = None
         self.terminal = Terminal()
         
-        print self.terminal.enter_fullscreen()
-        print self.terminal.hide_cursor()
+        self.write(self.terminal.enter_fullscreen())
+        self.write(self.terminal.hide_cursor())
         
     def close(self):
-        print self.terminal.exit_fullscreen()
-        print self.terminal.normal_cursor()
+        self.write(self.terminal.exit_fullscreen())
+        self.write(self.terminal.normal_cursor())
 
     @property
     def width(self):
@@ -51,6 +53,10 @@ class ConsoleWindow(object):
     def clear(self):
         """ Clears the window """
         print self.terminal.clear()
+        
+    def write(self, string):
+        """ Write the string directly to stdout """
+        sys.stdout.write(string)
         
     @contextmanager
     def window(self):
