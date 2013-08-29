@@ -1,4 +1,5 @@
 from blessings import Terminal
+from contextlib import contextmanager
 
 class ConsoleWindow(object):
     """ Represents the Console Window displayed to the user """
@@ -50,5 +51,11 @@ class ConsoleWindow(object):
     def clear(self):
         """ Clears the window """
         print self.terminal.clear()
+        
+    @contextmanager
+    def window(self):
+        """ Returns the window """
+        yield Window
+        Window.close()
         
 Window = ConsoleWindow()
