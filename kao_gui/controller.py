@@ -1,3 +1,4 @@
+import sys
 
 class Controller:
     """ Represents a UI Controller """
@@ -9,6 +10,7 @@ class Controller:
             commands = {}
         self.commands = commands
         self.running = False
+        self.parent = None
     
     def run(self):
         """  """
@@ -53,4 +55,15 @@ class Controller:
         """ Add the given command to happen on the given events """
         for event in events:
             self.commands[event] = command
+            
+    def runController(self, controller):
+        """ Runs the next controller """
+        if self.isRunning():
+            controller.parent = self
+            controller.run()
         
+    def quitToDesktop(self, event=None):
+        """ Quit the application entirely """
+        self.stopRunning()
+        if self.parent is not None:
+            self.parent.quitToDesktop()
