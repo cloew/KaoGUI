@@ -61,7 +61,9 @@ class ConsoleWindow(object):
     @contextmanager
     def window(self):
         """ Returns the window """
-        yield Window
-        Window.close()
+        try:
+            yield self
+        finally:
+            self.close()
         
 Window = ConsoleWindow()
