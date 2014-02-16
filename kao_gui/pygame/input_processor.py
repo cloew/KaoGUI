@@ -1,3 +1,4 @@
+from kao_gui.pygame.quit_event_wrapper import QuitEventWrapper as QuitEvent
 
 class InputProcessor:
     """ Class to process input from Pygane and convert them to game commands """
@@ -22,7 +23,7 @@ class InputProcessor:
         
         for event in pygame.event.get():
             if event.type == QUIT:
-                pass # Should add some sort of wrapper to the Quit Event here
+                commands.append(QuitEvent)
             elif event.type == KEYUP:
                 self.addKeyEvent(commands, event, RELEASED)
             elif event.type == KEYDOWN:
