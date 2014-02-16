@@ -9,13 +9,12 @@ class PygameWindow:
     
     def __init__(self, width=640, height=480, caption='Pokemon', iconFilename='resources/images/pokeball3.bmp'):
         """ Build the window """
-        self.window = self.getWindow(caption, iconFilename)
-        self.clock = pygame.time.Clock()
-        
         self.width = width
         self.height = height
-        
         self.screen = None
+        
+        self.window = self.getWindow(caption, iconFilename)
+        self.clock = pygame.time.Clock()
         
     def setScreen(self, screen):
         """ Sets the current Screen Display """
