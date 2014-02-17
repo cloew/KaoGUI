@@ -16,6 +16,7 @@ class PygameScreen:
         """ Draws the screen to the Window provided """
         window = GetWindow()
         self.surface = pygame.Surface((window.width, window.height))
+        self.surface.fill((255,255,255))
         self.drawSurface(self.surface)
         return self.surface
         
