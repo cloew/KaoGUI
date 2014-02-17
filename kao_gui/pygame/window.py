@@ -1,6 +1,6 @@
 import pygame
 
-from kao_gui.pygame.pygame_helper import load_image
+from kao_gui.pygame.icon_builder import IconBuilder
 from pygame.locals import *
 
 class PygameWindow:
@@ -23,21 +23,22 @@ class PygameWindow:
     def getWindow(self, caption, iconFilename):
         """ Gets the GUI Window """
         pygame.init()
-        pygame.display.set_icon(self.getIcon(iconFilename))
+        builder = IconBuilder(iconFilename)
+        pygame.display.set_icon(builder.buildIcon())
         pygame.display.set_caption(caption)
         pygame.mouse.set_visible(0)
         return pygame.display.set_mode((self.width, self.height))
         
-    def getIcon(self, iconFilename):
-        """ Gets the icon """
-        icon = pygame.Surface((32,32))
-        rawicon = load_image(iconFilename) # must be 32x32, black is transparant
-        icon.set_colorkey(rawicon.get_at((0,0)))
+    # def getIcon(self, iconFilename):
+        # """ Gets the icon """
+        # icon = pygame.Surface((32,32))
+        # rawicon = load_image(iconFilename) # must be 32x32, black is transparant
+        # icon.set_colorkey(rawicon.get_at((0,0)))
         
-        for i in range(0,32):
-            for j in range(0,32):
-                icon.set_at((i,j), rawicon.get_at((i,j)))
-        return icon
+        # for i in range(0,32):
+            # for j in range(0,32):
+                # icon.set_at((i,j), rawicon.get_at((i,j)))
+        # return icon
         
     def update(self):
         """ Update the screen """
