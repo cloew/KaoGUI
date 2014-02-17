@@ -35,16 +35,17 @@ class PygameWindow:
         builder = IconBuilder(iconFilename)
         pygame.display.set_icon(builder.buildIcon())
         
-    def update(self):
-        """ Update the screen """
+    def draw(self):
+        """ Draw the screen """
         self.clock.tick(self.GAME_SPEED)
         self.screen.update()
-        self.screen.draw(self)
+        surface = self.screen.draw(self)
+        self.window.blit(surface, (0,0))
         self.redraw()
         
-    def draw(self, surface, pos):
-        """ Draws the surface to the window """
-        self.window.blit(surface, pos)
+    # def draw(self, surface, pos):
+        # """ Draws the surface to the window """
+        # self.window.blit(surface, pos)
             
     def redraw(self):
         pygame.display.flip()
