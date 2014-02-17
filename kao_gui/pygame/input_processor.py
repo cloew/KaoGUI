@@ -39,8 +39,8 @@ class InputProcessor:
         """ Adds a Key Event to the Commands list """
         if self.bindings is None:
             commands.append((event.key, keyState))
-        elif event.key in self.bindings.keyBindings:
-            gameAction = self.bindings.keyBindings[event.key]
+        elif event.key in self.bindings:
+            gameAction = self.bindings[event.key]
             commands.append((gameAction, keyState))
         
 InputProcessor = InputProcessor()

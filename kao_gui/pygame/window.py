@@ -1,7 +1,8 @@
-import pygame
-
 from kao_gui.pygame.icon_builder import IconBuilder
+from kao_gui.pygame.input_processor import InputProcessor
+
 from pygame.locals import *
+import pygame
 
 class PygameWindow:
     """ Represents the Pygame window displayed to the user """
@@ -57,9 +58,10 @@ class PygameWindow:
    
 Window = None
 
-def BuildWindow(width=640, height=480, caption='KaoGUI Pygame Window', iconFilename=None):
+def BuildWindow(width=640, height=480, caption='KaoGUI Pygame Window', iconFilename=None, bindings=None):
     global Window
     Window = PygameWindow(width=width, height=height, caption=caption, iconFilename=iconFilename)
+    InputProcessor.bindings = bindings
     return Window
     
 def GetWindow():
