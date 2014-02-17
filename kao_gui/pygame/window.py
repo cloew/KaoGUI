@@ -38,7 +38,6 @@ class PygameWindow:
     def draw(self):
         """ Draw the screen """
         self.clock.tick(self.GAME_SPEED)
-        self.screen.update()
         surface = self.screen.draw()
         self.window.blit(surface, (0,0))
         self.redraw()

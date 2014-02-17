@@ -15,6 +15,7 @@ class PygameWidget:
         
     def draw(self):
         """ Draw the widget and return the surface """
+        self.update()
         self.surface = self.buildSurface()
         self.drawSurface()
         return self.surface
