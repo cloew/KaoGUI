@@ -7,7 +7,7 @@ class PygameWindow:
     """ Represents the Pygame window displayed to the user """
     GAME_SPEED = 60
     
-    def __init__(self, width=640, height=480, caption='Pokemon', iconFilename='resources/images/pokeball3.bmp'):
+    def __init__(self, width=640, height=480, caption='KaoGUI Pygame Window', iconFilename=None):
         """ Build the window """
         self.width = width
         self.height = height
@@ -23,11 +23,16 @@ class PygameWindow:
     def getWindow(self, caption, iconFilename):
         """ Gets the GUI Window """
         pygame.init()
-        builder = IconBuilder(iconFilename)
-        pygame.display.set_icon(builder.buildIcon())
+        if iconFilename is not None:
+            self.setIcon(iconFilename)
         pygame.display.set_caption(caption)
         pygame.mouse.set_visible(0)
         return pygame.display.set_mode((self.width, self.height))
+        
+    def setIcon(self, iconFilename):
+        """ Set the Window Icon """
+        builder = IconBuilder(iconFilename)
+        pygame.display.set_icon(builder.buildIcon())
         
     def update(self):
         """ Update the screen """
@@ -50,4 +55,9 @@ class PygameWindow:
     def close(self):
         """ Close the window...? """
    
-Window = PygameWindow()
+Window = None
+
+def BuildWindow(width=640, height=480, caption='KaoGUI Pygame Window', iconFilename=None):
+    global Window
+    Window = PygameWindow(width=width, height=height, caption=caption, iconFilename=iconFilename)
+    return Window
