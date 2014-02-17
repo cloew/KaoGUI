@@ -29,17 +29,6 @@ class PygameWindow:
         pygame.mouse.set_visible(0)
         return pygame.display.set_mode((self.width, self.height))
         
-    # def getIcon(self, iconFilename):
-        # """ Gets the icon """
-        # icon = pygame.Surface((32,32))
-        # rawicon = load_image(iconFilename) # must be 32x32, black is transparant
-        # icon.set_colorkey(rawicon.get_at((0,0)))
-        
-        # for i in range(0,32):
-            # for j in range(0,32):
-                # icon.set_at((i,j), rawicon.get_at((i,j)))
-        # return icon
-        
     def update(self):
         """ Update the screen """
         self.clock.tick(self.GAME_SPEED)
