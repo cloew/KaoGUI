@@ -1,4 +1,8 @@
+from kao_gui.pygame.key_states import PRESSED, RELEASED
 from kao_gui.pygame.quit_event_wrapper import QuitEventWrapper as QuitEvent
+
+from pygame.locals import *
+import pygame
 
 class InputProcessor:
     """ Class to process input from Pygane and convert them to game commands """
@@ -7,7 +11,7 @@ class InputProcessor:
         """ Builds the input processor """
         self.bindings = None
         
-    def processInputs(self, functions):
+    def processInput(self, functions):
         """ Process inputs to functions """
         commands = self.convertEventToCommand()
         
@@ -39,4 +43,4 @@ class InputProcessor:
             gameAction = self.bindings.keyBindings[event.key]
             commands.append((gameAction, keyState))
         
-inputProcessor = InputProcessor()
+InputProcessor = InputProcessor()

@@ -1,0 +1,2 @@
+PRESSED = 1
+RELEASED = 2
