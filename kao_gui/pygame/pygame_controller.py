@@ -1,7 +1,7 @@
 from kao_gui.controller import Controller
 from kao_gui.pygame.input_processor import InputProcessor
 from kao_gui.pygame.quit_event_wrapper import QuitEventWrapper as QuitEvent
-from kao_gui.pygame.window import Window
+from kao_gui.pygame.window import GetWindow
 
 
 class PygameController(Controller):
@@ -16,7 +16,7 @@ class PygameController(Controller):
         
     def getWindow(self):
         """ Return the Console Window """
-        return Window
+        return GetWindow()
         
     def getInputProcessor(self):
         """ Return Input Processor """

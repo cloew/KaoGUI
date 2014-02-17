@@ -61,3 +61,8 @@ def BuildWindow(width=640, height=480, caption='KaoGUI Pygame Window', iconFilen
     global Window
     Window = PygameWindow(width=width, height=height, caption=caption, iconFilename=iconFilename)
     return Window
+    
+def GetWindow():
+    """ Return the current window """
+    global Window
+    return Window
