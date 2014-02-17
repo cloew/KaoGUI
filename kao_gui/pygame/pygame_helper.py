@@ -5,7 +5,7 @@ def load_image(imageFilename, colorkey=None):
     try:
         image = pygame.image.load(imageFilename)
     except pygame.error, message:
-        print 'Cannot load image:', name
+        print 'Cannot load image:', imageFilename
         raise SystemExit, message
     if colorkey is not None:
         if colorkey is -1:
