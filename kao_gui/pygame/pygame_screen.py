@@ -20,7 +20,3 @@ class PygameScreen(PygameWidget):
         surface = pygame.Surface((window.width, window.height))
         surface.fill((255,255,255))
         return surface
-        
-    def drawSurface(self, surface):
-        """ Draw the screen on the given surface.
-            Override in sub-class """

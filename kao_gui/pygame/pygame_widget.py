@@ -16,10 +16,10 @@ class PygameWidget:
     def draw(self):
         """ Draw the widget and return the surface """
         self.surface = self.buildSurface()
-        self.drawSurface(self.surface)
+        self.drawSurface()
         return self.surface
         
-    def drawSurface(self, surface):
+    def drawSurface(self):
         """ Draw the screen on the given surface.
             Override in sub-class """
         
