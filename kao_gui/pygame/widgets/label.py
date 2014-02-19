@@ -18,3 +18,7 @@ class Label(PygameWidget):
     def setBold(self, bold):
         """ Sets the Boldness of the entry """
         self.font.set_bold(bold)
+        
+    def setText(self, text):
+        """ Set the current text """
+        self.text = text
