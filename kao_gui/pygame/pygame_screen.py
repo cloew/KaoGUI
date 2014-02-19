@@ -9,6 +9,9 @@ class PygameScreen(PygameWidget):
     def __init__(self):
         """ Initialize the Screen """
         PygameWidget.__init__(self)
+        window = GetWindow()
+        self.width = window.width
+        self.height = window.height
         
     def update(self):
         """ Update the screen.
@@ -16,7 +19,6 @@ class PygameScreen(PygameWidget):
             
     def buildSurface(self):
         """ Build the surface to use when drawing """
-        window = GetWindow()
-        surface = pygame.Surface((window.width, window.height))
+        surface = pygame.Surface((self.width, self.height))
         surface.fill((255,255,255))
         return surface
