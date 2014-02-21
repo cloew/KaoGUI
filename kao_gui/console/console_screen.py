@@ -1,5 +1,7 @@
 from kao_gui.console.console_widget import ConsoleWidget
 
+import sys
+
 class ConsoleScreen(ConsoleWidget):
     """ Represents the view for a Consoel Screen """
     
@@ -33,5 +35,6 @@ class ConsoleScreen(ConsoleWidget):
         
         for line in text:
             with self.terminal.location(column, lineNumber):
-                print line
+                # print line
+                sys.stdout.write(line)
             lineNumber += 1
