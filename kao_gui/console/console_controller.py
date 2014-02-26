@@ -1,6 +1,6 @@
 from kao_gui.controller import Controller
 from kao_gui.console.input_processor import InputProcessor
-from kao_gui.console.window import Window
+from kao_gui.console.window import GetWindow
 
 from kao_console.ascii import CTRL_Q, ESCAPE
 
@@ -18,7 +18,7 @@ class ConsoleController(Controller):
         
     def getWindow(self):
         """ Return the Console Window """
-        return Window
+        return GetWindow()
         
     def getInputProcessor(self):
         """ Return Input Processor """

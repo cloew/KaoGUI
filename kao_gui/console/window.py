@@ -42,14 +42,6 @@ class ConsoleWindow(object):
         """ Draw the Screen """
         self.screen.draw()
         
-    # def draw(self, text, pos):
-        # """ Draws the text to the window """
-        # lineNum = pos[1]
-        # for line in text:
-            # with self.terminal.location(int(pos[0]), int(lineNum)):
-                # print line
-            # lineNum += 1
-        
     def clear(self):
         """ Clears the window """
         print self.terminal.clear()
@@ -57,13 +49,19 @@ class ConsoleWindow(object):
     def write(self, string):
         """ Write the string directly to stdout """
         sys.stdout.write(string)
+
+__window = None
         
-    @contextmanager
-    def window(self):
-        """ Returns the window """
-        try:
-            yield self
-        finally:
-            self.close()
+@contextmanager
+def WindowManager():
+    """ Returns the window """
+    global __window
+    try:
+        __window = ConsoleWindow()
+        yield __window
+    finally:
+        __window.close()
         
-Window = ConsoleWindow()
+def GetWindow():
+    global __window
+    return __window

@@ -1,4 +1,4 @@
-from kao_gui.console.window import Window
+from kao_gui.console.window import GetWindow
 
 class ConsoleWidget:
     """ Represents a widget for the console """
@@ -6,12 +6,12 @@ class ConsoleWidget:
     @property
     def terminal(self):
         """ Return the terminal """
-        return Window.terminal
+        return self.window.terminal
     
     @property
     def window(self):
         """ Return the window """
-        return Window
+        return GetWindow()
         
     def formatTerminalString(self, string):
         """ Return a formatted terminal string """
