@@ -62,6 +62,11 @@ def WindowManager():
     finally:
         __window.close()
         
+def BuildWindow():
+    global __window
+    __window = ConsoleWindow()
+    return __window
+        
 def GetWindow():
     global __window
     return __window
