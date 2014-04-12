@@ -27,14 +27,3 @@ class ConsoleScreen(ConsoleWidget):
         centerWidth -= size[0]/2
         centerHeight -= size[1]/2
         return centerWidth, centerHeight
-        
-    def drawAtPosition(self, text, position):
-        """ Draws the text to the window """
-        column = int(position[0])
-        lineNumber = int(position[1])
-        
-        for line in text:
-            with self.terminal.location(column, lineNumber):
-                # print line
-                sys.stdout.write(line)
-            lineNumber += 1
