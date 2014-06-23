@@ -25,33 +25,40 @@ class PygameWidget:
             Override in sub-class """
         
     def drawOnSurface(self, surface, left=None, right=None, centerx=None,
-                                     top=None, bottom=None, centery=None):
+                                     top=None, bottom=None, centery=None, isRelative=True):
         """ Draw the given surface onto this widget at the position specified """
-        leftPosition = self.normalizeXCoordinate(surface, left, right, centerx)
-        topPosition = self.normalizeYCoordinate(surface, top, bottom, centery)
+        leftPosition = self.normalizeXCoordinate(surface, left, right, centerx, isRelative)
+        topPosition = self.normalizeYCoordinate(surface, top, bottom, centery, isRelative)
         self.blit(surface, (leftPosition, topPosition))
         
-    def normalizeXCoordinate(self, surface, left, right, centerx):
+    def normalizeXCoordinate(self, surface, left, right, centerx, isRelative):
         """ Normalize and return the X Coordinate of the left of the surface """
         if left is not None:
-            return left*self.width
+            return self.transfromRelativeValue(left, self.width, isRelative)
         elif right is not None:
-            return right*self.width - surface.get_width()
+            return self.transfromRelativeValue(right, self.width, isRelative) - surface.get_width()
         elif centerx is not None:
-            return centerx*self.width - surface.get_width()/2
+            return self.transfromRelativeValue(centerx, self.width, isRelative) - surface.get_width()/2
         else:
             raise Exception("Must provide either left, right, or centerx argument")
             
-    def normalizeYCoordinate(self, surface, top, bottom, centery):
+    def normalizeYCoordinate(self, surface, top, bottom, centery, isRelative):
         """ Normalize and return the Y Coordinate of the top of the surface """
         if top is not None:
-            return top*self.height
+            return self.transfromRelativeValue(top, self.height, isRelative)
         elif bottom is not None:
-            return bottom*self.height - surface.get_height()
+            return self.transfromRelativeValue(bottom, self.height, isRelative) - surface.get_height()
         elif centery is not None:
-            return centery*self.height - surface.get_height()/2
+            return self.transfromRelativeValue(centery, self.height, isRelative) - surface.get_height()/2
         else:
             raise Exception("Must provide either top, bottom, or centery argument")
+            
+    def transfromRelativeValue(self, value, modifier, isRelative):
+        """ Transform a relative percent value into a pixel value, if needed """
+        newValue = value
+        if isRelative:
+            newValue = value*modifier
+        return newValue
         
     def blit(self, surface, position):
         """ Blit the given surface onto the widget at the given position """
