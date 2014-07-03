@@ -3,12 +3,14 @@ import sys
 class Controller:
     """ Represents a UI Controller """
     
-    def __init__(self, screen, commands=None):
+    def __init__(self, screen=None, commands=None, noScreen=False):
         """ Initialize the controller """
         self.screen = screen
         if commands is None:
             commands = {}
         self.commands = commands
+        self.noScreen = noScreen
+        
         self.running = False
         self.parent = None
     
@@ -20,9 +22,10 @@ class Controller:
             self.performGameCycle()
             
             if self.isRunning():
-                window = self.getWindow()
-                window.setScreen(self.screen)
-                window.draw()
+                if not self.noScreen:
+                    window = self.getWindow()
+                    window.setScreen(self.screen)
+                    window.draw()
                 
                 self.handleInput()
                 

@@ -7,12 +7,12 @@ from kao_gui.pygame.window import GetWindow
 class PygameController(Controller):
     """ Represents a Controller for the Pygame UI """
     
-    def __init__(self, screen, commands=None, cancellable=False):
+    def __init__(self, screen=None, commands=None, cancellable=False, noScreen=False):
         """ Initialize the controller """
         if commands is None:
             commands = {}
         commands[QuitEvent] = self.quitToDesktop
-        Controller.__init__(self, screen, commands=commands)
+        Controller.__init__(self, screen, commands=commands, noScreen=noScreen)
         
     def getWindow(self):
         """ Return the Console Window """
